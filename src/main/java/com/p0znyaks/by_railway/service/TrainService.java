@@ -3,11 +3,10 @@ package com.p0znyaks.by_railway.service;
 import com.p0znyaks.by_railway.entity.Train;
 import com.p0znyaks.by_railway.exception.TrainNotFoundException;
 import com.p0znyaks.by_railway.repository.TrainRepository;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +20,7 @@ public class TrainService {
 
     @Transactional(readOnly = true)
     public Train findById(Long id) {
-        return trainRepository.findById(id).orElseThrow(()-> new TrainNotFoundException(id));
+        return trainRepository.findById(id).orElseThrow(() -> new TrainNotFoundException(id));
     }
 
     @Transactional
@@ -31,7 +30,8 @@ public class TrainService {
 
     @Transactional
     public void delete(Long id) {
-        Train train = trainRepository.findById(id).orElseThrow(() -> new TrainNotFoundException(id));
+        Train train =
+                trainRepository.findById(id).orElseThrow(() -> new TrainNotFoundException(id));
         trainRepository.delete(train);
     }
 }

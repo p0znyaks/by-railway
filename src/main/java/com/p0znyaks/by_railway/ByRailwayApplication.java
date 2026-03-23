@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ByRailwayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ByRailwayApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(ByRailwayApplication.class, args);
+    }
 }
