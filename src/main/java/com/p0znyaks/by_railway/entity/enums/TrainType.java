@@ -1,4 +1,4 @@
-package com.p0znyaks.by_railway.enums;
+package com.p0znyaks.by_railway.entity.enums;
 
 public enum TrainType {
     REGIONAL,

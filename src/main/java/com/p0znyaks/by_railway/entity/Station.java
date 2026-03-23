@@ -23,7 +23,7 @@ public class Station {
     private String city;
 
     public Station(String name, String city) {
-        name = this.name;
-        city = this.city;
+        this.name = name;
+        this.city = city;
     }
 }

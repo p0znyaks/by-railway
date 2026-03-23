@@ -1,6 +1,6 @@
 package com.p0znyaks.by_railway.entity;
 
-import com.p0znyaks.by_railway.enums.TrainType;
+import com.p0znyaks.by_railway.entity.enums.TrainType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +25,7 @@ public class Train {
     private TrainType type;
 
     public Train(String number, TrainType type) {
-        number = this.number;
-        type = this.type;
+        this.number = number;
+        this.type = type;
     }
 }

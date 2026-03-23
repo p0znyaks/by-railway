@@ -1,7 +1,7 @@
 package com.p0znyaks.by_railway.dto;
 
 import com.p0znyaks.by_railway.entity.Train;
-import com.p0znyaks.by_railway.enums.TrainType;
+import com.p0znyaks.by_railway.entity.enums.TrainType;
 
 public record TrainResponse(Long id, String number, TrainType type) {
     public static TrainResponse from(Train train) {
