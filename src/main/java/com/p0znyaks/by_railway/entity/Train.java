@@ -23,4 +23,9 @@ public class Train {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TrainType type;
+
+    public Train(String number, TrainType type) {
+        number = this.number;
+        type = this.type;
+    }
 }

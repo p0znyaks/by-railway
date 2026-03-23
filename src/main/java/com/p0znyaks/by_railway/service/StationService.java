@@ -1,5 +1,7 @@
 package com.p0znyaks.by_railway.service;
 
+import com.p0znyaks.by_railway.dto.StationRequest;
+import com.p0znyaks.by_railway.dto.StationResponse;
 import com.p0znyaks.by_railway.entity.Station;
 import com.p0znyaks.by_railway.exception.StationNotFoundException;
 import com.p0znyaks.by_railway.repository.StationRepository;
@@ -14,24 +16,28 @@ public class StationService {
     private final StationRepository stationRepository;
 
     @Transactional(readOnly = true)
-    public List<Station> findAll() {
-        return stationRepository.findAll();
+    public List<StationResponse> findAll() {
+        return stationRepository.findAll().stream().map(StationResponse::from).toList();
     }
 
     @Transactional(readOnly = true)
-    public Station findById(Long id) {
-        return stationRepository.findById(id).orElseThrow(() -> new StationNotFoundException(id));
+    public StationResponse findById(Long id) {
+        return stationRepository
+                .findById(id)
+                .map(StationResponse::from)
+                .orElseThrow(() -> new StationNotFoundException(id));
     }
 
+    // TODO: Перебор ли здесь использовать Builder Pattern???
     @Transactional
-    public Station save(Station station) {
-        return stationRepository.save(station);
+    public StationResponse save(StationRequest request) {
+        Station station = new Station(request.name(), request.city());
+        return StationResponse.from(stationRepository.save(station));
     }
 
     @Transactional
     public void delete(Long id) {
-        Station station =
-                stationRepository.findById(id).orElseThrow(() -> new StationNotFoundException(id));
-        stationRepository.delete(station);
+        stationRepository.delete(
+                stationRepository.findById(id).orElseThrow(() -> new StationNotFoundException(id)));
     }
 }

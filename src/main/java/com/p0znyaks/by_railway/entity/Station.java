@@ -21,4 +21,9 @@ public class Station {
 
     @Column(nullable = false)
     private String city;
+
+    public Station(String name, String city) {
+        name = this.name;
+        city = this.city;
+    }
 }

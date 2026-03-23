@@ -12,6 +12,8 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
